@@ -22,7 +22,7 @@ Some samples are shown as below(source image, gray image and the result).
 3.['Basic.py'](https://github.com/FuNian788/Deecamp32/blob/master/Basic.py) includes some basic operations for edge extraction. We hope you can use these methods to get good results. (If one method doesn't work, try another one, or you can average the results of all methods.)    
 <img width="250" height="250" alt="source image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/CloseAreaDetect/source.jpg"/>
 <img width="250" height="250" alt="source image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/CloseAreaDetect/gray.jpg"/> 
-<img width="250" height="250" alt="source image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/CloseAreaDetect/result.jpg"/> 
+<img width="250" height="250" alt="source image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/CloseAreaDetect/result.jpg"/>    
 We collected some basic algorithms based on python-opencv, which help to extract the edges.  
 The functions are introduced as below.  
 (1) CompressChannel: compress the value of each channel from 256 kinds to 16 kinds, which improves the contrast of the image, but may lead to some obvious edges in the continuous color block.  
@@ -30,7 +30,7 @@ The functions are introduced as below.
 (3) Opening: We always erode --> dilate to remove samll background-objects/noises, fill some edges. We set iterations instead of using 'cv2.morphologyEx' here, and please be careful of the size of the kernel, same as below.  
 (4) Closing: We always dilate --> erode to splice break edges, eliminate holes inside the foreground.  
 (5) Gradient: Gradient = Dilation - Erosion, which is some kind of edge. Surprisingly, this method works very well in some images.    
-In order to see the effect of the method more intuitively, the running result of the algorithm is visualized as follows.  
+In order to see the effect of the methods more intuitively, the running results of the algorithm are visualized as follows.  
 I use 송민국's daily photo as source image because I love him so much.  
 ><div align=center><img width="300" height="168" alt="source image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/Basic/source.jpg"/></div>   
 The images in Line 1 are 'compress', 'mean' and 'Gussian', the images in Line 2 are 'opening','closing', and 'gradient'.      
