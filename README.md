@@ -31,5 +31,5 @@ The functions are introduced as below.
 (4) Closing: We always dilate --> erode to splice break edges, eliminate holes inside the foreground.  
 (5) Gradient: Gradient = Dilation - Erosion, which is some kind of edge. Surprisingly, this method works very well in some images.   
 
-#### All the code has detailed comments，if you don't understand, just google it.
+#### All the code has detailed comments, if you don't understand, just google it.
 
