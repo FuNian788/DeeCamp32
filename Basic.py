@@ -85,7 +85,7 @@ class Basic():
         img = cv2.imread(self.IMG_PATH, 0)
         kernel = np.ones((3,3), np.uint8)
         img = cv2.morphologyEx(img, cv2.MORPH_GRADIENT, kernel)
-        
+        cv2.imwrite("G:/Deecamp/1/gradient.jpg", img)
         cv2.imshow("gradient", img)
         cv2.waitKey(0)
 
