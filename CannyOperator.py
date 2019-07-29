@@ -73,6 +73,18 @@ class ImageChange():
                 break
         cv2.destroyAllWindows()
 
+    '''Split the source image to 3 channels(r,g,b), find each image's edge through Canny,
+            then bitwise AND and merge 3 new edges.'''
+    def SplitMerge(self):
+        img = cv2.imread(self.IMG_PATH)
+        b = cv2.Canny(cv2.GaussianBlur(img[:,:,0], (3,3), 0), self.Static_Low_Threshold, self.Static_High_Threshold)
+        g = cv2.Canny(cv2.GaussianBlur(img[:,:,1], (3,3), 0), self.Static_Low_Threshold, self.Static_High_Threshold)
+        r = cv2.Canny(cv2.GaussianBlur(img[:,:,2], (3,3), 0), self.Static_Low_Threshold, self.Static_High_Threshold)
+
+        BitwiseAnd = cv2.bitwise_and(b,g,r)
+        cv2.imshow('BitwiseAnd', BitwiseAnd)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
 
 TestImage = ImageChange()
@@ -88,4 +100,8 @@ if cv2.waitKey(0) == 27:
     cv2.destroyAllWindows()
 '''
 # 3. Dynamic Canny for two threshold.
+'''
 TestImage.DynamicCanny()
+'''
+# 4. Canny for each channel and then bitwise AND.
+TestImage.SplitMerge()
