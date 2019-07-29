@@ -3,7 +3,6 @@ import numpy as np
  
 class ImageChange():
 
-    # def __init__(self):
     def __init__(self, 
                 IMG_PATH = "G:/Deecamp/1.jpg", 
                 Static_Low_Threshold = 30, 
