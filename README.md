@@ -2,9 +2,9 @@
 ### Group32: image-based closed edge map generation.   
 #### Contributors: Zhangli Zhou, Yang Jiao, Zixiao Pan, Zexian Li.  
 
-In order to reduce innecessary repetitive operations, we open some code.  
+In order to reduce unnecessary repetitive work, we open some code.  
 
-1.['CannyOperator.py'](https://github.com/FuNian788/Deecamp32/blob/master/CannyOperator.py) includes two main operations.    
+1.['CannyOperator.py'](https://github.com/FuNian788/Deecamp32/blob/master/CannyOperator.py) includes two main operators.    
 The function 'StaticCanny' can perform a Canny operation on the input image, but you need to set the low / high thresholds manually.  
 The function 'DynamicCanny' can dynamically modeify the thresholds through a trackbar.  
 By the way, don't forget to change the image's path and static thresholds in the function 'init'. The same below.  
