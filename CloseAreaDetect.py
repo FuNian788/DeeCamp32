@@ -6,19 +6,24 @@ class CloseAreaDetect():
 
     def __init__(self, 
                 IMG_PATH = "G:/Deecamp/6.jpg", 
-                Gray_Threshold = 200,
-                Save_PATH = "G:/Deecamp/closeArea.jpg"
+                Save_PATH = "G:/Deecamp/closeArea.jpg",
+                Gray_Threshold = 200
                 ):
         self.IMG_PATH = IMG_PATH
-        self.Gray_Threshold = Gray_Threshold
         self.Save_PATH = Save_PATH
+        self.Gray_Threshold = Gray_Threshold
 
-    def CloseArea(self):
+
+    def CloseArea(self, img, SaveImage = False):
         # 1.Get grayscale for close area judgement. 
-        img = cv2.imread(self.IMG_PATH)
         cv2.imshow('source image', img)
         cv2.waitKey(0)
-        gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        if (len(img.shape)==3):
+            gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        elif (len(img.shape)==2):
+            gray_img = img
+        else:
+            print("The image is neither RGB or grayscale.")
 
         # 2.Divide pixels to 2 categories through threshold (colors in original image may not be just balck and white).
         #   Gray image just has 2 channels.
@@ -51,8 +56,13 @@ class CloseAreaDetect():
                 for k in range(3):
                     new_img[i][j][k] =  color_list[color][k]
         cv2.imshow('closed-area image', new_img)
-        cv2.imwrite(self.Save_PATH, new_img)
+        if (SaveImage):
+            cv2.imwrite(self.Save_PATH, new_img)
         cv2.waitKey(0)
 
-op = CloseAreaDetect()
-op.CloseArea()
+
+# test code 
+if __name__=="__main__":
+    op = CloseAreaDetect()
+    img = cv2.imread(op.IMG_PATH)
+    op.CloseArea(img, SaveImage = True)

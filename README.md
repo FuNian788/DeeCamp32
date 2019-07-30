@@ -41,5 +41,7 @@ The images in Line 1 are 'compress', 'mean' and 'Gussian', the images in Line 2 
 <img width="250" height="140" alt="closing image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/Basic/closing.jpg"/>
 <img width="250" height="140" alt="gradient image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/Basic/gradient.jpg"/>
 
-#### All the code has detailed comments, if you don't understand, just google it.
+#### All the code has detailed comments, if you don't understand, just google it.   
 
+### Update Log    
+July,30,2019  /  0.9  /  Refactor the code and fix some bug.     
