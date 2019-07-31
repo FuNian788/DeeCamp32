@@ -14,7 +14,7 @@ class CloseAreaDetect():
         self.Gray_Threshold = Gray_Threshold
 
 
-    def CloseArea(self, img, SaveImage = False):
+    def CloseArea(self, img, GrayWhiteChange = False, SaveImage = False):
         # 1.Get grayscale for close area judgement. 
         cv2.imshow('source image', img)
         cv2.waitKey(0)
@@ -31,7 +31,10 @@ class CloseAreaDetect():
         for i in range(gray_img.shape[0]):
             for j in range(gray_img.shape[1]):
                     # The threshold should be set manually.
-                    gray_img[i][j] = 255 if gray_img[i][j]>=self.Gray_Threshold else 0
+                    if not (GrayWhiteChange):
+                        gray_img[i][j] = 255 if gray_img[i][j]>=self.Gray_Threshold else 0
+                    else:
+                        gray_img[i][j] = 0 if gray_img[i][j]>=self.Gray_Threshold else 255
         cv2.imshow('gray image', gray_img)
         cv2.waitKey(0)
 
@@ -41,7 +44,8 @@ class CloseAreaDetect():
         print("There are {} closed ares.".format(AreaNum) )
 
         # 4.Create a blank image and color each closed area.
-        new_img = np.zeros(img.shape, np.uint8) 
+        # I don't know why image.shape is (w,h) instead of (w,h,channel=3). Debug for a long time.
+        new_img = np.zeros((img.shape[0],img.shape[1],3), np.uint8)
         color_list = [(255,255,255)] * (AreaNum+1)
         # Create random color.
         for i in range(AreaNum):
@@ -54,7 +58,7 @@ class CloseAreaDetect():
             for j in range(len(labels[0])):
                 color = labels[i][j]
                 for k in range(3):
-                    new_img[i][j][k] =  color_list[color][k]
+                    new_img[i][j][k] = color_list[color][k]
         cv2.imshow('closed-area image', new_img)
         if (SaveImage):
             cv2.imwrite(self.Save_PATH, new_img)
