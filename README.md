@@ -45,3 +45,6 @@ The images in Line 1 are 'compress', 'mean' and 'Gussian', the images in Line 2 
 
 ### Update Log    
 July,30,2019  /  0.9  /  Refactor the code and fix some bug.     
+
+### Related Works  
+1.[Hed]https://github.com/s9xie/hed  
