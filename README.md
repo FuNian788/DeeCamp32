@@ -39,12 +39,21 @@ The images in Line 1 are 'compress', 'mean' and 'Gussian', the images in Line 2 
 <img width="250" height="140" alt="Gussian image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/Basic/Gussian.jpg"/>
 <img width="250" height="140" alt="opening image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/Basic/opening.jpg"/>
 <img width="250" height="140" alt="closing image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/Basic/closing.jpg"/>
-<img width="250" height="140" alt="gradient image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/Basic/gradient.jpg"/>
+<img width="250" height="140" alt="gradient image" src="https://github.com/FuNian788/Deecamp32/raw/master/img/Basic/gradient.jpg"/>    
+
+4.['RegionGrow.py'](https://github.com/FuNian788/Deecamp32/blob/master/RegionGrow.py) can easily get closed regions through random seeds, but excellent results mainly depend on the color difference between foreground and background. By the way, the algorithm runs for a long time, maybe several minutes.  
+In our code, you have 3 ways to generate seeds: randomly, uniformly or let all pixels to be seeds.    
+We use the difference values of R/G/B channels to determine whether to expand, and we consider each pixel's eight-neighborhood.   
+As for the overall process, we first generate few seeds and let them grow, then we generate & grow a few more times in order to prevent some regions from being dropped, in the growing process, we discard grown-regions whose areas are still small. For remain blank areas, the SMALL ones(like noises), we think they are too samll to expand to a region so we let big & near regions 'annex' them; while we think the BIG ones may contain complex textures, so we ignore their texture details and treat them as separate new regions. In the end, we select the average color of each region on the original image to paint the new image, we get the final edges at the same time.   
+All parameters are in the 'main' function, see comments for their meanings.    
+Many tricks have been applied, hope you can adjust parameters happily...    
 
 #### All the code has detailed comments, if you don't understand, just google it.   
 
 ### Update Log    
 July,30,2019  /  0.9  /  Refactor the code and fix some bug.     
+Oct,7,2019    /  1.0  /  Add the method 'Region-Grow' and optimize codes.     
 
-### Related Works  
-1.[Hed]https://github.com/s9xie/hed  
+### Related Works   
+1.[Hed]https://github.com/s9xie/hed   
+

@@ -60,7 +60,7 @@ class ImageChange():
         pass
     
     
-    def DynamicCanny(self, img, kernel_size = 3):
+    def DynamicCanny(self, img, img_path = None, kernel_size = 3):
         cv2.namedWindow('thresholds')
         # function 'nothing' means pass.
         cv2.createTrackbar('low threshold', 'thresholds', 0, 200, self.nothing)
@@ -68,7 +68,9 @@ class ImageChange():
         while(1):
             self.Dynamic_Low_Threshold = cv2.getTrackbarPos('low threshold', 'thresholds')
             self.Dynamic_High_Threshold = cv2.getTrackbarPos('high threshold', 'thresholds')
-            img = cv2.imread(self.IMG_PATH, 0)
+            if img_path == None:
+                img_path = self.IMG_PATH
+            img = cv2.imread(img_path, 0)
             img = cv2.GaussianBlur(img, (kernel_size, kernel_size), 0)
             img = cv2.Canny(img, self.Dynamic_Low_Threshold, self.Dynamic_High_Threshold)
             img = cv2.bitwise_and(img, img, mask = img)

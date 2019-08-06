@@ -14,7 +14,7 @@ class CloseAreaDetect():
         self.Gray_Threshold = Gray_Threshold
 
 
-    def CloseArea(self, img, GrayWhiteChange = False, SaveImage = False):
+    def CloseArea(self, img, GrayWhiteChange = False, MinAreaSize = 10, SaveImage = False):
         # 1.Get grayscale for close area judgement. 
         cv2.imshow('source image', img)
         cv2.waitKey(0)
@@ -47,12 +47,28 @@ class CloseAreaDetect():
         # I don't know why image.shape is (w,h) instead of (w,h,channel=3). Debug for a long time.
         new_img = np.zeros((img.shape[0],img.shape[1],3), np.uint8)
         color_list = [(255,255,255)] * (AreaNum+1)
+        
         # Create random color.
         for i in range(AreaNum):
             r = random.randint(0, 255)
             g = random.randint(0, 255)
             b = random.randint(0, 255)
             color_list[i+1] = (r,g,b)
+
+        # # Delete small closed areas.
+        # AreaSize = [0] * (AreaNum + 1)
+        # for i in range(img.shape[0]):
+        #     for j in range(img.shape[1]):
+        #         k = labels[i][j]
+        #         AreaSize[k] = AreaSize[k] + 1
+        # # print(AreaSize)
+        # print(labels.shape)
+        # print(np.where(labels == 24))
+        # for i in range(AreaNum+1):
+        #     if AreaSize[i] < MinAreaSize:
+        #         new_labels = np.where( labels == i, 0 )
+        #         # labels[ np.where( labels == i ) ] = 0 
+        
         # color each area.
         for i in range(len(labels)):
             for j in range(len(labels[0])):
