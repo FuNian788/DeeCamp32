@@ -1,10 +1,8 @@
-# Deecamp
-### Group32: image-based closed edge map generation.   
-#### Contributors: Zhangli Zhou, Yang Jiao, Zixiao Pan, Zexian Li.  
+# DeeCamp Group32: image-based closed edge map generation.   
+### Proud to say that we have won the Best Innovation Award and won the 4th place in BeiJing's 35 groups.  
+### Contributors: Kuangyi CheHe, Yuxiang Chen, Jingwen Chen, Jingwen Guo, Chenxu Hu, Yang Jiao, Tao Li, Guanting Lou, Zixiao Pan, Heng Sun, Jiaqi Sun, Jiangxue Xu, Rui Xu, Zhangli Zhou, Zexian Li.  
 
-In order to reduce unnecessary repetitive work, we open some code, which mainly consist of traditional methods in computer vision.  
-For related deep-learning methods, we hope to get your suggestions, including but not limited to GAN, K-means, Style migration, Semantic segmentation and so on.  
-Wish for your pull request. If you find more traditional methods, please contact us as well.    
+In order to reduce unnecessary repetitive work, we open some code, which mainly consist of traditional methods in computer vision. More deep-learning methods we used can be found in "Related Works".   
 
 1.['CannyOperator.py'](https://github.com/FuNian788/Deecamp32/blob/master/CannyOperator.py) includes two main operators.    
 The function 'StaticCanny' can perform a Canny operation on the input image, but you need to set the low / high thresholds manually.  
@@ -53,7 +51,18 @@ Many tricks have been applied, hope you can adjust parameters happily...
 ### Update Log    
 July,30,2019  /  0.9  /  Refactor the code and fix some bug.     
 Oct,7,2019    /  1.0  /  Add the method 'Region-Grow' and optimize codes.     
+Oct,19,2019   /  2.0  /  Organize all used methods.
 
 ### Related Works   
-1.[Hed]https://github.com/s9xie/hed   
+#### We mainly use 'PoolNet' and 'CycleGAN' for DeeCamp's display.  
+1. [Hed]https://github.com/s9xie/hed   
+2. [Contour-GAN]https://github.com/Feynman1999/ContourGAN-PyTorch   
+3. [PoolNet]https://github.com/backseason/PoolNet   
+4. [Semantic-Soft-Segmentation]https://github.com/yaksoy/SemanticSoftSegmentation   
+5. [COB]https://github.com/kmaninis/COB    
+6. [EdgeBox]https://github.com/AlexMa011/edgeBoxes-Cpp-version     
+7. [CycleGAN]https://junyanz.github.io/CycleGAN/   
+8. [Pix2Pix]https://github.com/affinelayer/pix2pix-tensorflow   
+9. [Cartoon-GAN]https://github.com/taki0112/CartoonGAN-Tensorflow   
+[Web-Display]https://github.com/Feynman1999/Web-For-Project   
 
